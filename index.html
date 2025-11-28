@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RendixNexus</title>
+
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;
+    color: #ffffff;
+  }
+
+  /* ================= HERO ================= */
+  .hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 5%;
+    flex-wrap: wrap;
+  }
+
+  .hero-image {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .hero-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 40px #14a64a;
+  }
+
+  .hero-text {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 400px;
+  }
+
+  /* Dynamische Überschrift */
+  .hero-text h1 {
+    font-size: 2rem;
+    margin: 0;
+    color: #0f7c3e;
+    transition: opacity 0.4s ease;
+    white-space: pre-line;
+  }
+
+  /* KLEINER TEXT – kompakt, aber mehr Abstand zum großen Text */
+  .small-text {
+    margin-top: 65px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .small-text p {
+    margin: 0;
+    color: #bbbbbb;
+    font-size: 1rem;
+  }
+
+  /* Button */
+  .hero-button {
+    position: absolute;
+    bottom: 15%;
+    left: 20%;
+    background-color: #0c2e17c8;
+    color: #c1bcbc;
+    border: none;
+    padding: 12px 18px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #14b14eec;
+    transition: 0.2s ease;
+  }
+
+  .hero-button:hover {
+    background-color: #41604c;
+    color: #000;
+    transform: scale(1.06);
+  }
+
+  /* ================= SCROLL SECTION ================= */
+  .scroll-section {
+    margin-top: 150px;
+    padding: 50px 5%;
+    text-align: center;
+  }
+
+  .scroll-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #199e52;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    background: #111;
+    border: 1px solid #1f1f1f;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 330px;
+    box-shadow: 0 0 20px #0f3;
+    opacity: 0;
+    transform: translateY(80px);
+  }
+
+  .card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #14a64a;
+  }
+
+  .card p {
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+  }
+
+  .card button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background: #0f7c3e;
+    color: #000;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+
+  .card button:hover {
+    background: #23d463;
+  }
+
+  /* ================= PARALLAX SERVICE INFO ================= */
+  .parallax-section {
+    position: relative;
+    background: #0a0a0a;
+    padding: 100px 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .parallax-container {
+    font-size: 1.1rem;
+    color: #cccccc;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0;  
+    transform: translateY(50px);
+    background: rgba(0,0,0,0.3);
+    padding: 20px 25px;
+    border-radius: 10px;
+  }
+
+  .parallax-container h3 {
+    color: #0f7c3e;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="hero">
+  <div class="hero-image">
+    <img src="server2.png">
+
+    <div class="hero-text">
+      <h1 id="dynamic-heading">Webhosting auf dem nächsten Level</h1>
+
+      <div class="small-text">
+        <p>Persönliche Betreuung, 24/h</p>
+        <p>Selbst erstellte Website</p>
+        <p>Höchste Sicherheit</p>
+        <p>Green Hosting</p>
+      </div>
+    </div>
+
+    <button class="hero-button">Jetzt starten</button>
+  </div>
+</div>
+
+<!-- ================= SCROLL SECTION ================= -->
+<div class="scroll-section">
+  <h2>Unsere Angebote</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Basic</h3>
+      <p>Persönlich erstellte Website von unseren Designern mit bis zu 10 Bildern und 5 Unterseiten.</p>
+      <button>Basic wählen</button>
+    </div>
+
+    <div class="card">
+      <h3>Premium</h3>
+      <p>Proffesionelle Wesite für Ihr Unternehmen, Beratung + Designerleistung & Erreichbarkeit unter den Bürozeiten Persönlich für Sie.</p>
+      <button>Premium wählen</button>
+    </div>
+
+    <div class="card">
+      <h3>VIP</h3>
+      <p>24/7 Erreichbarkeit, persönliche Betreuung, kompletter Webshop & E-Commerce-System. Individuelle Videos, mit Animationen.</p>
+      <button>VIP wählen</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= PARALLAX SERVICE INFO ================= -->
+<div class="parallax-section">
+  <div class="parallax-container">
+    <h3>Basic Kunden</h3>
+    <p>
+      Zweimal pro Woche (Dienstag & Donnerstag) von 10 bis 16 Uhr erreichbar, 
+      um Fragen zur Website, Änderungen oder Störungen zu klären. 
+      Kein Ticketsystem – echte Mitarbeiter kümmern sich persönlich um jeden Fall.  
+      Websites werden individuell von unseren Webdesignern & Webdevelopern erstellt.  
+      Vertragslaufzeit: 1 Jahr, danach kann der Vertrag gekündigt werden.  
+      Preise bleiben während des Vertrags konstant.
+    </p>
+  </div>
+
+  <div class="parallax-container">
+    <h3>Premium Kunden</h3>
+    <p>
+      Montag 10 Uhr bis Donnerstag 19 uhr und Freitag von 9 - 12 Uhr persönliche Betreuung für Änderungen, Bilder, 
+      Animationen oder Anpassungen der Website. Direkter Kontakt ohne Umwege.  
+      Websites werden individuell von Webdesignern & Webdevelopern erstellt – kein Baukasten.  
+      Vertragslaufzeit: 3 Jahre.  
+      Vorzeitige Kündigung jederzeit möglich, die bereits erbrachte Arbeit wird mit 1000 € abgegolten.  
+      Preise bleiben während des Vertrags konstant.
+    </p>
+  </div>
+
+  <div class="parallax-container">
+    <h3>VIP Kunden</h3>
+    <p>
+      24/7 persönliche Erreichbarkeit über exklusive VIP-Nummer für technische Probleme, 
+      Änderungen oder dringende Anpassungen.  
+      Websites werden individuell von Webdesignern & Webdevelopern erstellt – kein Standard-Baukasten.  
+      Vertragslaufzeit: 3 Jahre.  
+      Vorzeitige Kündigung jederzeit möglich, die bereits erbrachte Arbeit wird mit 2500 € abgegolten.  
+      Preise bleiben während des Vertrags konstant.
+    </p>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer style="background:#0a0a0a; padding:50px 5%; color:#cccccc; margin-top:100px; text-align:center;">
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:50px; align-items:center;">
+
+    <!-- Datenschutz / Sicherheit Siegel -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <div style="width:80px; height:80px; border:3px solid #0f7c3e; border-radius:50%; display:flex; justify-content:center; align-items:center; font-weight:bold; color:#0f7c3e;">
+        🔒
+      </div>
+      <p style="margin:0; max-width:120px;">Datenschutz</p>
+    </div>
+
+    <!-- Kundenbewertungen Siegel -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:10px;">
+      <div style="width:80px; height:80px; border:3px solid #0f7c3e; border-radius:50%; display:flex; justify-content:center; align-items:center; font-weight:bold; color:#0f7c3e;">
+        ⭐
+      </div>
+      <p style="margin:0; max-width:120px;">Kundenbewertungen</p>
+    </div>
+
+   <!-- Firma / Ansprechpartner -->
+<div class="footer-seal" onclick="window.location.href='rendixnexus.html'">
+  <div style="width:80px; height:80px; border:3px solid #0f7c3e; border-radius:50%; display:flex; justify-content:center; align-items:center; font-weight:bold; color:#0f7c3e; font-size:2rem; transition: transform 0.3s ease;">
+    🏢
+  </div>
+  <p style="margin:5px 0 0 0; max-width:140px; text-align:center; color:#fff; font-weight:bold;">RendixNexus</p>
+</div>
+
+  </div>
+
+  <p style="margin-top:40px; font-size:0.85rem; color:#888;">© 2025 Rendix Nexus GmbH. Alle Rechte vorbehalten.</p>
+</footer>
+
+
+<script>
+/* ================= TEXT ROTATION ================= */
+const headings = [
+  "Webhosting auf dem\nnächsten Level",
+  "ALL IN ONE mit RendixNeXus",
+  "Unsere Website im Wert\nvon 500 bis 5000 Euro"
+];
+
+let current = 0;
+const h = document.getElementById("dynamic-heading");
+
+setInterval(() => {
+  h.style.opacity = 0;
+  setTimeout(() => {
+    current = (current + 1) % headings.length;
+    h.textContent = headings[current];
+    h.style.opacity = 1;
+  }, 400);
+}, 5000);
+
+/* ================= GSAP SCROLL ANIMATION ================= */
+gsap.registerPlugin(ScrollTrigger);
+
+// Karten Animation
+gsap.utils.toArray(".card").forEach((card, i) => {
+  gsap.to(card, {
+    opacity: 1,
+    y: 0,
+    duration: 0.8,
+    delay: i * 0.2,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: card,
+      start: "top 85%",
+    }
+  });
+});
+
+// Parallax-Service-Section Animation
+gsap.utils.toArray(".parallax-container").forEach((container) => {
+  gsap.to(container, {
+    y: 0,
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: container,
+      start: "top 85%",
+      end: "top 60%",
+      scrub: true
+    }
+  });
+});
+</script>
+
+</body>
+</html>
